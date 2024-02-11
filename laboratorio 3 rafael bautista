@@ -1,0 +1,99 @@
+#include <iostream>
+
+using namespace std;
+
+// funcion para comprobar si un año es bisiesto o no
+bool esBisiesto(int year) {
+    return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
+}
+
+// funcion para comprobar si un numero es primo
+bool esPrimo(int number) {
+    if (number <= 1) {
+        return false;
+    }
+    for (int i = 2; i * i <= number; i++) {
+        if (number % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// Funcion para suma de numeros
+int sumar(int a, int b) {
+    return a + b;
+}
+
+// Funcion para resta de numeros 
+int restar(int a, int b) {
+    return a - b;
+}
+
+// Funcion para multiplicar dos numeros 
+int multiplicar(int a, int b) {
+    return a * b;
+}
+
+// Funcion para dividir 
+float dividir(int a, int b) {
+    return (float)a / b;
+}
+
+int main() {
+    int choice;
+    int year, number, num1, num2;
+    bool primo;
+
+    do {
+        cout << "\nMenu:" << endl;
+        cout << "1. Verificar si un año es bisiesto" << endl;
+        cout << "2. Determinar si un número es primo" << endl;
+        cout << "3. Realizar operaciones aritméticas básicas" << endl;
+        cout << "4. Salir" << endl;
+        cout << "Elija una opción: ";
+        cin >> choice;
+
+        switch (choice) {
+        case 1:
+            cout << "Ingrese un año: ";
+            cin >> year;
+            if (esBisiesto(year)) {
+                cout << year << " es un año bisiesto." << endl;
+            }
+            else {
+                cout << year << " no es un año bisiesto." << endl;
+            }
+            break;
+        case 2:
+            cout << "Ingrese un número: ";
+            cin >> number;
+            primo = esPrimo(number);
+            if (primo) {
+                cout << number << " es un número primo." << endl;
+            }
+            else {
+                cout << number << " no es un número primo." << endl;
+            }
+            break;
+        case 3:
+            cout << "Ingrese el primer número: ";
+            cin >> num1;
+            cout << "Ingrese el segundo número: ";
+            cin >> num2;
+            cout << "1. Sumar: " << sumar(num1, num2) << endl;
+            cout << "2. Restar: " << restar(num1, num2) << endl;
+            cout << "3. Multiplicar: " << multiplicar(num1, num2) << endl;
+            cout << "4. Dividir: " << dividir(num1, num2) << endl;
+            break;
+        case 4:
+            cout << "¡Hasta luego!" << endl;
+            break;
+        default:
+            cout << "Opción inválida. Intente de nuevo." << endl;
+            break;
+        }
+    } while (choice != 4);
+
+    return 0;
+}
