@@ -1,0 +1,57 @@
+#include <iostream>
+#include <cmath>
+
+
+int performOperation(int a, int b, char op) {
+    switch (op) {
+    case '+':
+        return a + b;
+    case '-':
+        return a - b;
+    case '*':
+        return a * b;
+    case '/':
+        if (b == 0) {
+            std::cerr << "Error: Division por cero." << std::endl;
+            return 0;
+        }
+        return a / b;
+    case '%':
+        return a % b;
+    default:
+        std::cerr << "Error: operacion invalida." << std::endl;
+        return 0;
+    }
+}
+
+
+void printResults(int numOperations, int* results) {
+    std::cout << "Results of " << numOperations << " operaciones:" << std::endl;
+    for (int i = 0; i < numOperations; i++) {
+        std::cout << "Operaciones " << i + 1 << ": " << results[i] << std::endl;
+    }
+}
+
+int main() {
+
+    int numOperations, a, b;
+    char op;
+    int results[100];
+
+    std::cout << "Introduzca el número de operaciones a realizar: ";
+    std::cin >> numOperations;
+
+    
+    for (int i = 0; i < numOperations; i++) {
+        std::cout << "introduzca el simbolo (+, -, *, /, %): ";
+        std::cin >> op;
+        std::cout << "Introduzca dos números enteros separados por un espacio: ";
+        std::cin >> a >> b;
+        results[i] = performOperation(a, b, op);
+    }
+
+    
+    printResults(numOperations, results);
+
+    return 0;
+}
